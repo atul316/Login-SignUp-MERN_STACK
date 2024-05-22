@@ -3,16 +3,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const FormDataModel = require ('./models/FormData');
 
+const PORT = 4000;
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/practice_mern');
+mongoose.connect('mongodb+srv://atulchowdhury316:LqA7Yk8KGO5Of4Ze@mern-login-signup.ejukp67.mongodb.net/?retryWrites=true&w=majority&appName=Mern-Login-SignUp');
+
+//INSERT DATA INTO DATABASE (POST) !!!
 
 app.post('/register', (req, res)=>{
-    // To post / insert data into database
-
     const {email, password} = req.body;
     FormDataModel.findOne({email: email})
     .then(user => {
@@ -28,13 +29,13 @@ app.post('/register', (req, res)=>{
     
 })
 
+//FIND RECORD/DATA !!!
+
 app.post('/login', (req, res)=>{
-    // To find record from the database
     const {email, password} = req.body;
     FormDataModel.findOne({email: email})
     .then(user => {
         if(user){
-            // If user found then these 2 cases
             if(user.password === password) {
                 res.json("Success");
             }
@@ -42,14 +43,12 @@ app.post('/login', (req, res)=>{
                 res.json("Wrong password");
             }
         }
-        // If user not found then 
         else{
             res.json("No records found! ");
         }
     })
 })
 
-app.listen(3001, () => {
-    console.log("Server listining on http://127.0.0.1:3001");
-
+app.listen(PORT, () => {
+    console.log(`Server listining on http://127.0.0.1:${PORT}`);
 });

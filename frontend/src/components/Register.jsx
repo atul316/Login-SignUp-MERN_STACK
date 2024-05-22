@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './index.css';
 
 const Register = () => {
     const [name, setName] = useState();
@@ -13,7 +14,7 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.post( 'http://localhost:3001/register', {name, email, password})
+        axios.post( 'http://localhost:4000/register', {name, email, password})
         .then(result => {
             console.log(result);
             if(result.data === "Already registered"){
@@ -31,10 +32,10 @@ const Register = () => {
 
 
     return (
-        <div>
-            <div className="d-flex justify-content-center align-items-center text-center vh-100" style= {{backgroundImage : "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))"}}>
-                <div className="bg-white p-3 rounded" style={{width : '40%'}}>
-                    <h2 className='mb-3 text-primary'>Register</h2>
+        <div className=''>
+            <div className="text-center d-flex justify-content-center align-items-center vh-100 h-100 background">
+                <div className="p-4 h-[550px] backdrop-blur-sm bg-white/40 rounded-2xl" style={{width : '30%'}}>  
+                    <h2 className='mb-12 text-5xl font-semibold text-green-500'>Register</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3 text-start">
                             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -75,11 +76,12 @@ const Register = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Register</button>
+                        <button type="submit" className="w-full p-3 mt-3 text-lg font-bold text-white bg-green-400 rounded-lg hover:bg-green-500">Register</button>
                     </form>
-
-                    <p className='container my-2'>Already have an account ?</p>
-                    <Link to='/login' className="btn btn-secondary">Login</Link>
+                    <div className='flex items-center justify-center gap-2 mt-4' >
+                        <p className=''>Already have an account ?</p>
+                        <Link to='/login' className="text-blue-600 underline ">Login</Link>
+                    </div>
                 </div>
             </div>
         </div>

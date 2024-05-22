@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background {
+    background-image: url(../assets/background.jpg);
+
+}
+.ddiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+}

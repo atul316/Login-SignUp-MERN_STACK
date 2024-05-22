@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.post( 'http://localhost:3001/login', {email, password})
+        axios.post( 'http://localhost:4000/login', {email, password})
         .then(result => {
             console.log(result);
             if(result.data === "Success"){
@@ -30,9 +30,9 @@ const Login = () => {
 
     return (
         <div>
-            <div className="d-flex justify-content-center align-items-center text-center vh-100" style= {{backgroundImage : "linear-gradient(#00d5ff,#0095ff,rgba(93,0,255,.555))"}}>
-                <div className="bg-white p-3 rounded" style={{width : '40%'}}>
-                    <h2 className='mb-3 text-primary'>Login</h2>
+            <div className="text-center d-flex justify-content-center align-items-center vh-100 background ">
+                <div className="p-4 rounded-2xl h-[500px] backdrop-blur-sm bg-white/50" style={{width : '30%'}}>
+                    <h2 className='mt-2 text-5xl font-semibold text-green-500 mb-14'>Login</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3 text-start">
                             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -60,11 +60,14 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="w-full p-3 mt-3 text-lg font-bold text-white bg-green-400 rounded-lg hover:bg-green-500">Login</button>
                     </form>
                     {/* TO add ' appostopee */}
-                    <p className='container my-2'>Don&apos;t have an account?</p>
-                    <Link to='/register' className="btn btn-secondary">Register</Link>
+                    <div className='flex items-center justify-center gap-2 mt-10'>
+                    <p className=''>Don&apos;t have an account?</p>
+                    <Link to='/register' className="text-blue-500 underline">Register</Link>
+                    </div>
+                    
                 </div>
             </div>
         </div>
