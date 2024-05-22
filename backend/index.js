@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://atulchowdhury316:LqA7Yk8KGO5Of4Ze@mern-login-signup.ejukp67.mongodb.net/?retryWrites=true&w=majority&appName=Mern-Login-SignUp');
+mongoose.connect(process.env.MONGO_URI);
 
 //INSERT DATA INTO DATABASE (POST) !!!
 
